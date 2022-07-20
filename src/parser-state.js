@@ -11,7 +11,7 @@ export function ParserState(parser, tokenStream, options) {
   this.savedCurrent = null;
   this.savedNextToken = null;
   this.allowMemberAccess = options.allowMemberAccess !== false;
-  this.preventMemberAccess = new Set(options.preventMemberAccess || []);
+  this.restrictMemberAccess = new Set(options.restrictMemberAccess || []);
 }
 
 ParserState.prototype.next = function () {
