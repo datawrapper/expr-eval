@@ -27,7 +27,7 @@
     "coverage": "npm run build && nyc --reporter=lcov --reporter=text-summary mocha",
     "lint": "eslint index.js src test rollup.config.js rollup-min.config.js",
     "watch": "rollup -c rollup.config.js -w",
-    "build": "rollup -c rollup.config.js && rollup -c rollup-min.config.js && rollup -c rollup-esm.config.js",
+    "build": "rollup -c rollup.config.js && rollup -c rollup-cjs.config.js && rollup -c rollup-min.config.js && rollup -c rollup-esm.config.js",
     "prepublish": "npm run build"
   },
   "files": [
@@ -38,7 +38,7 @@
   "exports": {
     ".": {
       "import": "./dist/index.mjs",
-      "require": "./dist/bundle.js",
+      "require": "./dist/index.cjs",
       "browser": "./dist/bundle.min.js"
     }
   },
