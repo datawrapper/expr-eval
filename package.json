@@ -35,6 +35,13 @@
     "src/",
     "parser.d.ts"
   ],
+  "exports": {
+    ".": {
+      "import": "./dist/bundle.js",
+      "require": "./dist/index.mjs",
+      "browser": "./dist/bundle.min.js"
+    }
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/datawrapper/expr-eval.git"
