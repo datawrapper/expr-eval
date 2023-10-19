@@ -37,8 +37,8 @@
   ],
   "exports": {
     ".": {
-      "import": "./dist/bundle.js",
-      "require": "./dist/index.mjs",
+      "import": "./dist/index.mjs",
+      "require": "./dist/bundle.js",
       "browser": "./dist/bundle.min.js"
     }
   },
