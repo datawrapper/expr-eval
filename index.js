@@ -9,12 +9,22 @@
  but don't feel like you have to let me know or ask permission.
 */
 
-import { Expression } from './src/expression';
-import { Parser } from './src/parser';
+import * as functions from './src/functions.js';
+import evaluate from './src/evaluate.js';
+import { Expression } from './src/expression.js';
+import { Parser } from './src/parser.js';
+import { ParserState } from './src/parser-state.js';
+import { TEOF } from './src/token.js';
+import { TokenStream } from './src/token-stream.js';
 
 export {
   Expression,
-  Parser
+  Parser,
+  ParserState,
+  TEOF,
+  TokenStream,
+  evaluate,
+  functions
 };
 
 // Backwards compatibility
