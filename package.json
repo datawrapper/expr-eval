@@ -33,6 +33,7 @@
   "files": [
     "dist/",
     "src/",
+    "package.json",
     "parser.d.ts"
   ],
   "exports": {
@@ -40,7 +41,8 @@
       "import": "./dist/index.mjs",
       "require": "./dist/index.cjs",
       "browser": "./dist/bundle.min.js"
-    }
+    },
+    "./package.json": "./package.json"
   },
   "repository": {
     "type": "git",
