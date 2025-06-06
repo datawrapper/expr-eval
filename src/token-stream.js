@@ -46,6 +46,7 @@ TokenStream.prototype.next = function () {
     this.isSemicolon() ||
     this.isNamedOp() ||
     this.isConst() ||
+    this.isBacktickName() ||
     this.isName()
   ) {
     return this.current;
@@ -453,4 +454,33 @@ TokenStream.prototype.getCoordinates = function () {
 TokenStream.prototype.parseError = function (msg) {
   var coords = this.getCoordinates();
   throw new Error('parse error [' + coords.line + ':' + coords.column + ']: ' + msg);
+};
+
+TokenStream.prototype.isBacktickName = function () {
+  if (this.expression.charAt(this.pos) !== '`') {
+    return false;
+  }
+
+  var startPos = this.pos;
+  var i = startPos + 1;
+  var escaped = false;
+
+  for (; i < this.expression.length; i++) {
+    var c = this.expression.charAt(i);
+    if (c === '`' && !escaped) {
+      // Found the closing backtick
+      var str = this.expression.substring(startPos + 1, i);
+      this.current = this.newToken(TNAME, str);
+      this.pos = i + 1;
+      return true;
+    }
+    if (c === '\\' && !escaped) {
+      escaped = true;
+    } else {
+      escaped = false;
+    }
+  }
+
+  this.parseError('Unterminated backtick string');
+  return false;
 };
